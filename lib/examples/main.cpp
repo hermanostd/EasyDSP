@@ -1,7 +1,4 @@
-#include "FIR.hpp"
-#include "Lowpass.hpp"
-#include "Bandpass.hpp"
-#include "Highpass.hpp"
+#include "EasyDSP.hpp"
 
 #include <vector>
 #include <iostream>
