@@ -1,2 +1,0 @@
-/usr/bin/ar qc libeasydsp.a CMakeFiles/easydsp.dir/src/FIR.cpp.o CMakeFiles/easydsp.dir/src/Lowpass.cpp.o CMakeFiles/easydsp.dir/src/Highpass.cpp.o CMakeFiles/easydsp.dir/src/Bandpass.cpp.o
-/usr/bin/ranlib libeasydsp.a
