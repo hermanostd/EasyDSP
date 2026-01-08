@@ -1,0 +1,6 @@
+/mnt/c/users/oskar/desktop/lib/build/CMakeFiles/easydsp.dir
+/mnt/c/users/oskar/desktop/lib/build/CMakeFiles/edit_cache.dir
+/mnt/c/users/oskar/desktop/lib/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/users/oskar/desktop/lib/build/examples/CMakeFiles/main.dir
+/mnt/c/users/oskar/desktop/lib/build/examples/CMakeFiles/edit_cache.dir
+/mnt/c/users/oskar/desktop/lib/build/examples/CMakeFiles/rebuild_cache.dir
