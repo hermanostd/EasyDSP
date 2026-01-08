@@ -5,35 +5,6 @@
 #include <string>
 #include <expected>
 
-
-std::string FIRError_to_string(oh::fir::FIRError fir_error) {
-    switch (fir_error) {
-        case oh::fir::FIRError::InvalidParameterValue:
-            return "InvalidParameterValue";
-        case oh::fir::FIRError::InvalidParameterOrder:
-            return "InvalidParameterOrder";
-        case oh::fir::FIRError::InvalidSize:
-            return "InvalidSize";
-        case oh::fir::FIRError::MismatchedSize:
-            return "MismatchedSize";
-        default:
-            return "Unknown";
-    }
-}
-
-std::string FIRType_to_string(oh::fir::FIRType fir_type) {
-    switch (fir_type) {
-        case oh::fir::FIRType::Lowpass:
-            return "Lowpass";
-        case oh::fir::FIRType::Bandpass:
-            return "Bandpass";
-        case oh::fir::FIRType::Highpass:
-            return "Highpass";
-        default:
-            return "Undefined";
-    }
-}
-
 int main() {
     std::cout << "this is a simple program to showcase the features of easydsp" << std::endl;
     std::cout << std::endl;
@@ -41,21 +12,21 @@ int main() {
     /// creating a lowpass
     auto lp = oh::fir::Lowpass::create(0.25, 9);
     if(!lp) {
-        std::cout << FIRError_to_string(lp.error());
+        std::cout << lp->FIRErrorToString(lp.error());
     } else {
         std::cout << "succesfully created Lowpass" << std::endl;
     }
     /// creating a bandpass
     auto bp = oh::fir::Bandpass::create(0.1, 0.4, 9);
     if(!bp) {
-        std::cout << FIRError_to_string(lp.error());
+        std::cout << lp->FIRErrorToString(lp.error());
     } else {
         std::cout << "succesfully created Bandpass" << std::endl;
     }
     /// creating a highpass
     auto hp = oh::fir::Highpass::create(0.25, 9);
     if(!hp) {
-        std::cout << FIRError_to_string(lp.error());
+        std::cout << lp->FIRErrorToString(lp.error());
     } else {
         std::cout << "succesfully created Highpass" << std::endl;
     }
@@ -67,9 +38,9 @@ int main() {
     std::cout << "-------getType--------" << std::endl;
     std::cout << std::endl;
 
-    std::cout << "Lowpass: " << FIRType_to_string(lp -> getType()) << std::endl;
-    std::cout << "Bandpass: " << FIRType_to_string(bp -> getType()) << std::endl;
-    std::cout << "Highpass: " << FIRType_to_string(hp -> getType()) << std::endl;
+    std::cout << "Lowpass: " << lp->FIRTypeToString(lp -> getType()) << std::endl;
+    std::cout << "Bandpass: " << lp->FIRTypeToString(bp -> getType()) << std::endl;
+    std::cout << "Highpass: " << lp->FIRTypeToString(hp -> getType()) << std::endl;
 
     std::cout << std::endl;
     std::cout << "-------getSize--------" << std::endl;

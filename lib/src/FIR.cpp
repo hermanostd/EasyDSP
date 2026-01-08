@@ -106,6 +106,34 @@ std::expected <std::vector<double>, FIRError> FIR::convolutionOverride(std::vect
     }
 }
 
+std::string FIR::FIRErrorToString(oh::fir::FIRError fir_error) const {
+    switch (fir_error) {
+        case oh::fir::FIRError::InvalidParameterValue:
+            return "InvalidParameterValue";
+        case oh::fir::FIRError::InvalidParameterOrder:
+            return "InvalidParameterOrder";
+        case oh::fir::FIRError::InvalidSize:
+            return "InvalidSize";
+        case oh::fir::FIRError::MismatchedSize:
+            return "MismatchedSize";
+        default:
+            return "Unknown";
+    }
+}
+
+std::string FIR::FIRTypeToString(oh::fir::FIRType fir_type) const {
+    switch (fir_type) {
+        case oh::fir::FIRType::Lowpass:
+            return "Lowpass";
+        case oh::fir::FIRType::Bandpass:
+            return "Bandpass";
+        case oh::fir::FIRType::Highpass:
+            return "Highpass";
+        default:
+            return "Undefined";
+    }
+}
+
 }
 
 
