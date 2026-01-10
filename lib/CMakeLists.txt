@@ -1,4 +1,4 @@
-#thanks YT:@PunchedTape for CMake tutorial :D
+#thanks YT:@PunchedTape for a great CMake tutorial :D
 
 cmake_minimum_required(VERSION 3.25)    #specify required version for cmake
 

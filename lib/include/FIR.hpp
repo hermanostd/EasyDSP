@@ -53,9 +53,7 @@ class FIR {
     /// @brief stores the type of filter
     FIRType m_type;
 
-    /// @brief stores the type of window
     wnd::WindowType m_window_type;
-
 
     /// @brief stores the coefficients of the filter
     std::vector <double> m_coefficients;
@@ -136,6 +134,11 @@ class FIR {
     /// @brief getter for WindowType
     /// @return type of window
     wnd::WindowType getWindowType() const noexcept;
+
+    /// @brief set and apply new window (regenerates coefficients)
+    /// @param w_type type of window
+    /// @return void on success, FIRError on failure
+    std::expected <void, FIRError> setWindowType(wnd::WindowType w_type);
 
     ///<    calulating the convlution
 

@@ -6,18 +6,16 @@
 #include <cmath>
 #include <cstddef>
 
-///<    work in progress, mutable window class
-
 namespace oh::wnd{
 
-enum WindowType {
+enum class WindowType {
     Rectangular,
     Hamming,
     Hanning,
     Blackman
 };
 
-enum WindowError {
+enum class WindowError {
     InvalidSize,
     InvalidType,
     MismatchedSize
@@ -51,7 +49,8 @@ class Window {
 
         std::expected <std::vector <double>, WindowError> apply(const std::vector <double>& signal) const;
 
-        std::expected <std::vector <double>, WindowError> applyInPlace(std::vector <double>& signal) const;
+        std::expected <void, WindowError> applyInPlace(std::vector <double>& signal) const;
+
 
         static std::expected <Window, WindowError> create(size_t size);
 

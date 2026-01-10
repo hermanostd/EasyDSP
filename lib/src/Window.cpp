@@ -82,7 +82,6 @@ const std::vector <double>& Window::getCoefficients() const {
     return m_coefficients;
 }
 
-
 std::expected <void, WindowError> Window::setWindowType(WindowType type) {
     m_type = type;
     if (auto w = calculateCoefficients(); !w) {
@@ -133,7 +132,7 @@ std::expected <std::vector <double>, WindowError> Window::apply(const std::vecto
     }
 }
 
-std::expected <std::vector <double>, WindowError> Window::applyInPlace(std::vector <double>& signal) const{
+std::expected <void, WindowError> Window::applyInPlace(std::vector <double>& signal) const{
     const size_t signal_size = signal.size();
     size_t iterator = 0;
     if (signal_size == m_coefficients.size()) {
@@ -141,7 +140,7 @@ std::expected <std::vector <double>, WindowError> Window::applyInPlace(std::vect
             w *= m_coefficients[iterator];
             iterator++;
         }
-        return signal;
+        return {};
     } else {
         return std::unexpected(WindowError::MismatchedSize);
     }

@@ -113,6 +113,14 @@ wnd::WindowType FIR::getWindowType() const noexcept {
     return m_window_type;
 }
 
+std::expected <void, FIRError> FIR::setWindowType(wnd::WindowType w_type) {
+    m_window_type = w_type;
+    if (auto w = calculateCoefficients(); !w) {
+        return std::unexpected(w.error());
+    } else {
+        return {};
+    }
+}
 
 std::expected <std::vector<double>, FIRError> FIR::convolve(const std::vector<double>& signal) const {        
     const size_t N = signal.size();
