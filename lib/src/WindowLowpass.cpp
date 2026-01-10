@@ -4,6 +4,8 @@ namespace oh::fir {
 
 WindowLowpass::WindowLowpass(double fc, size_t size) : FIR(FIRType::WindowLowpass, size), m_fc(fc) {}
 
+WindowLowpass::WindowLowpass(double fc, size_t size, wnd::WindowType w_type) : FIR(FIRType::WindowLowpass, size, w_type), m_fc(fc) {}
+
 std::expected <void, FIRError> WindowLowpass::calculateCoefficients() {            
     const size_t N = getSize();
     const double fc = m_fc;
@@ -14,6 +16,16 @@ std::expected <void, FIRError> WindowLowpass::calculateCoefficients() {
     for (size_t n = 0; n < N; ++n) {
         double x = n - M;
         h[n] = 2.0 * fc * sinc(2.0 * fc * x);
+    }
+
+    auto win = wnd::Window::create(getWindowType(), N);
+
+    if (!win) {
+        return std::unexpected(FIRError::WindowError);
+    }
+
+    if(win -> applyInPlace(h); !win) {
+        return std::unexpected(FIRError::WindowError);
     }
 
     if (auto w = setCoefficients(h); !w) {
@@ -35,6 +47,26 @@ std::expected <WindowLowpass, FIRError> WindowLowpass::create(double fc, size_t 
     }
 
     WindowLowpass lp(fc, size);
+
+    if(auto w = lp.calculateCoefficients(); !w) {
+        return std::unexpected(w.error());
+    } else {
+        return lp;
+    }
+
+}
+
+
+std::expected <WindowLowpass, FIRError> WindowLowpass::create(double fc, size_t size, wnd::WindowType w_type) {          
+    if(auto w = checkSize(size); !w) {          
+        return std::unexpected(w.error());
+    }
+
+    if (auto w = checkFrequencyRange(fc); !w) {          
+        return std::unexpected(w.error());
+    }
+
+    WindowLowpass lp(fc, size, w_type);
 
     if(auto w = lp.calculateCoefficients(); !w) {
         return std::unexpected(w.error());

@@ -27,7 +27,8 @@ enum class FIRError {
     MismatchedSize,
     InvalidParameterValue,
     InvalidParameterOrder,
-    NormalisationFailed
+    NormalisationFailed,
+    WindowError
 };
 
 ///<    debugging and error handling
@@ -130,6 +131,11 @@ class FIR {
     /// @brief getter for type
     /// @return type of filter
     FIRType getType() const noexcept;
+
+
+    /// @brief getter for WindowType
+    /// @return type of window
+    wnd::WindowType getWindowType() const noexcept;
 
     ///<    calulating the convlution
 

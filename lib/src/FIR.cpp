@@ -32,7 +32,9 @@ std::string toString(FIRType fir_type){
     }
 }
 
-FIR::FIR(FIRType type, size_t size)  : m_type(type), m_coefficients(size , 0.0) {} 
+FIR::FIR(FIRType type, size_t size)  : m_type(type), m_coefficients(size , 0.0), m_window_type(wnd::WindowType::Rectangular) {}
+
+FIR::FIR(FIRType type, size_t size, wnd::WindowType w_type)  : m_type(type), m_coefficients(size , 0.0), m_window_type(w_type) {} 
 
 std::expected <void, FIRError> FIR::checkFrequencyRange(double fc) {           
     if(fc <= 0 || fc >= 0.5) {
@@ -105,6 +107,10 @@ size_t FIR::getSize() const noexcept {
 
 FIRType FIR::getType() const noexcept {          
     return m_type;
+}
+
+wnd::WindowType FIR::getWindowType() const noexcept {          
+    return m_window_type;
 }
 
 
