@@ -5,6 +5,7 @@
 #include <expected>
 #include <cmath>
 #include <cstddef>
+#include <string>
 
 namespace oh::wnd{
 
@@ -20,6 +21,10 @@ enum class WindowError {
     InvalidType,
     MismatchedSize
 };
+
+std::string toString(WindowType);
+
+std::string toString(WindowError);
 
 class Window {
 

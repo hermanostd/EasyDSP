@@ -2,6 +2,34 @@
 
 namespace oh::wnd{
 
+std::string toString(WindowType win_type) {
+    switch(win_type) {
+        case WindowType::Rectangular:
+            return "Rectangular";
+        case WindowType::Hamming:
+            return "Hamming";
+        case WindowType::Hanning:
+            return "Hanning";
+        case WindowType::Blackman:
+            return "Blackman";
+        default:
+            return "Undefined";
+    }
+}
+
+std::string toString(WindowError win_error) {
+    switch (win_error) {
+        case WindowError::InvalidSize:
+            return "InvalidSize";
+        case WindowError::InvalidType:
+            return "InvalidType";
+        case WindowError::MismatchedSize:
+            return "MismatchedSize";
+        default:
+            return "Undefined";
+    }
+}
+
 Window::Window(size_t size) : m_type(WindowType::Rectangular), m_coefficients(size, 0) {}
 
 Window::Window(WindowType w_type, size_t size) : m_type(w_type), m_coefficients(size, 0) {}
