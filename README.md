@@ -9,8 +9,10 @@ FEATURES:
 
 -Mutable windows
 
--easy and explicit error handeling using enums
+-Easy and explicit error handeling using enums
 
--no exposed constructors, validation handled by create()
+-No exposed constructors, validation handled by create()
 
--built in convolve() and convolveInPlace() functions for using the filters
+-Built in convolve() and convolveInPlace() functions for using the filters
+
+-Built in apply() and applyInPlac() functions for using windows
