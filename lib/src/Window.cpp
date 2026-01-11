@@ -30,9 +30,9 @@ std::string toString(WindowError win_error) {
     }
 }
 
-Window::Window(size_t size) : m_type(WindowType::Rectangular), m_coefficients(size, 0) {}
+Window::Window(size_t size) : m_type(WindowType::Rectangular), m_coefficients(size, 0.0) {}
 
-Window::Window(WindowType w_type, size_t size) : m_type(w_type), m_coefficients(size, 0) {}
+Window::Window(WindowType w_type, size_t size) : m_type(w_type), m_coefficients(size, 0.0) {}
         
 std::expected <void, WindowError> Window::calculateCoefficients() {
     const size_t N = m_coefficients.size();
@@ -172,6 +172,10 @@ std::expected <void, WindowError> Window::applyInPlace(std::vector <double>& sig
     } else {
         return std::unexpected(WindowError::MismatchedSize);
     }
+}
+
+const WindowType Window::getType() const {
+    return m_type;
 }
 
 }

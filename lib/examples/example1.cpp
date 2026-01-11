@@ -21,7 +21,7 @@ int main() {
     size_t second_size = 9;     ///< easy to print
 
 
-    std::cout << "This is the default method of creating FIR filters" << std::endl;
+    std::cout << "This is the default way of creating FIR filters" << std::endl;
     {
         auto lp = oh::fir::WindowLowpass::create(0.25, first_size, oh::wnd::WindowType::Rectangular);
         if(!lp) {

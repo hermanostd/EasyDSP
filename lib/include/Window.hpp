@@ -56,6 +56,7 @@ class Window {
 
         std::expected <void, WindowError> applyInPlace(std::vector <double>& signal) const;
 
+        const WindowType getType() const;
 
         static std::expected <Window, WindowError> create(size_t size);
 

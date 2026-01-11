@@ -8,3 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED YES)
 
 #link libraries
 target_link_libraries(example1 PRIVATE easydsp)
+
+add_executable(example2 example2.cpp)
+set_property(TARGET example2 PROPERTY CXX_STANDARD 23)
+target_link_libraries(example2 PRIVATE easydsp)
